@@ -19,11 +19,29 @@ def tick_font(tick_label, precision="%.2f"):
 def axis_label_font(phrase):
     return huge(phrase)
 
-def xlabel(phrase):
-    plt.xlabel(axis_label_font(phrase), **cfg.AXIS_LABELS)
+def xlabel(phrase, ax=None, formatter=axis_label_font):
+    if ax != None:
+        ax.set_xlabel(formatter(phrase))
+    else:
+        plt.xlabel(formatter(phrase))
 
-def ylabel(phrase):
-    plt.ylabel(axis_label_font(phrase))
+def ylabel(phrase, ax=None, formatter=axis_label_font):
+    if ax != None:
+        ax.set_ylabel(formatter(phrase))
+    else:
+        plt.ylabel(formatter(phrase))
+
+def ylim(lim_tuple, ax=None):
+    if ax != None:
+        ax.set_ylim(lim_tuple)
+    else:
+        plt.ylim(lim_tuple)
+
+def xlim(lim_tuple, ax=None):
+    if ax != None:
+        ax.set_xlim(lim_tuple)
+    else:
+        plt.xlim(lim_tuple)
 
 def legend_font(phrase):
     return huge(phrase)
@@ -268,5 +286,34 @@ def plot_a_box_and_whisker( ys
     
     plt.setp(bp["medians"], color="red")
 
+def plot_a_line( xs
+               , ys
+               , idx             = 0
+               , label_data      = True
+               , plot_markers    = True
+               , err             = None
+               , label           = None
+               , axis_to_plot_on = None):
+    # if label == None:
+    #     label = "SCATTER %d" % idx
+
+    if axis_to_plot_on == None:
+        axis_to_plot_on = plt
+
+    plot_kwargs = { "linestyle"     : line_style(idx)
+                  , "color"         : line_color(idx)
+                  }
+    
+    if plot_markers:
+        plot_kwargs["marker"] = marker_style(idx)
+
+    if label_data:
+        plot_kwargs["label"] = label
+
+    if err != None:
+        # plot_kwargs["err"] = err
+        return axis_to_plot_on.errorbar(xs, ys, yerr=err, **plot_kwargs)
+    else:
+        return axis_to_plot_on.plot(xs, ys, **plot_kwargs)
 
 

@@ -21,14 +21,14 @@ LEGEND_LABELS           = ["$\\epsilon$-LPR$", "LPR", "DuFi", "Optimal"]
 # BAR_PLOT_COLORS         = ["white", "white", "white", "white", "white"]
 BAR_PLOT_COLORS         = ["palegreen", "skyblue", "lightpink", "silver"]
 # BAR_PLOT_TEXTURES       = ["//", "O", "x", "*", "|"]
-BAR_PLOT_TEXTURES       = ["//", ".", "*", "\\", "|"]
+BAR_PLOT_TEXTURES       = ["//", ".", "*", "\\", "."]
 
 MARKER_STYLE            = ["x", "o", "^", "v", (5, 0, 360/5)]
 MARKER_COLOR            = ["red", "lime", "palegreen"]
 MARKER_FILL_STYLES      = ["none"]
 # LINE_STYLE              = ["--", "-", "-."]
-# LINE_STYLE              = ["-", "-.", "--"]
-LINE_STYLE              = ["-"]
+LINE_STYLE              = ["-", ":", "--"]
+# LINE_STYLE              = ["-"]
 LINE_COLOR              = ["red", "darkviolet", "orange", "green", "tab:brown"]
 FONT                    = { "family"        : "sans serif"
                           , "size"          : 16
